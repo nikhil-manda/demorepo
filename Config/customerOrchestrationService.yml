@@ -1,0 +1,25 @@
+server:
+  port: 8081
+logging:
+  level:
+   io.github.resilience4j.circuitbreaker: DEBUG
+   com.bank: DEBUG
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 100000
+      minimumNumberOfCalls: 5000000
+      permittedNumberOfCallsInHalfOpenState: 300000
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 50000s
+      failureRateThreshold: 90
+      eventConsumerBufferSize: 100
+  instances:
+    countriesCircuitBreaker:
+      baseConfig: default
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint.health.show-details: always
+  health.circuitbreakers.enabled: true

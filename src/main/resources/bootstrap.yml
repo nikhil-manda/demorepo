@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: customerOrchestrationService
+  config:
+    name: customerOrchestrationService
+server:
+  port: 8081
