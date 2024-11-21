@@ -1,2 +1,4 @@
 a1
 a2
+#deleted b1
+b2
